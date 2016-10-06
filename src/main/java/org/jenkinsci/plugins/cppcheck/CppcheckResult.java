@@ -392,7 +392,8 @@ public class CppcheckResult implements Serializable {
 
                 if (curCppFile.getLineNumber() == prevCppFile.getLineNumber()
                         && curCppFile.getFileNameNotNull().equals(prevCppFile.getFileNameNotNull())
-                        && curCppFile.getMessage().equals(prevCppFile.getMessage())) {
+                        && curCppFile.getMessage().equals(prevCppFile.getMessage())
+                        && prevFile.getDiffState() == null) {
                     curFile.setDiffState(CppcheckDiffState.UNCHANGED);
                     prevFile.setDiffState(CppcheckDiffState.UNCHANGED);
                     break;
@@ -416,7 +417,8 @@ public class CppcheckResult implements Serializable {
                 CppcheckFile prevCppFile = prevFile.getCppcheckFile();
 
                 if (curCppFile.getFileNameNotNull().equals(prevCppFile.getFileNameNotNull())
-                        && curCppFile.getMessage().equals(prevCppFile.getMessage())) {
+                        && curCppFile.getMessage().equals(prevCppFile.getMessage())
+                        && prevFile.getDiffState() == null) {
                     curFile.setDiffState(CppcheckDiffState.UNCHANGED);
                     prevFile.setDiffState(CppcheckDiffState.UNCHANGED);
                     break;
